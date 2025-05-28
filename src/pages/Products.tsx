@@ -1,0 +1,225 @@
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+
+const Products = () => {
+  const [selectedCategory, setSelectedCategory] = useState('todos');
+  const { addToCart } = useCart();
+
+  const categories = [
+    { id: 'todos', name: 'Todos os Produtos' },
+    { id: 'racao', name: 'Ração Premium' },
+    { id: 'brinquedos', name: 'Brinquedos' },
+    { id: 'acessorios', name: 'Acessórios' },
+    { id: 'higiene', name: 'Higiene & Beleza' },
+    { id: 'medicamentos', name: 'Medicamentos' },
+  ];
+
+  const products = [
+    {
+      id: 1,
+      name: 'Ração Premium Royal Canin',
+      price: 189.90,
+      oldPrice: 219.90,
+      category: 'racao',
+      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=400',
+      alt: 'Gato laranja e branco deitado - ração premium para felinos',
+      badge: 'Bestseller',
+      description: 'Alimentação completa e balanceada para cães adultos'
+    },
+    {
+      id: 2,
+      name: 'Brinquedo Interativo Kong',
+      price: 79.90,
+      category: 'brinquedos',
+      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=400',
+      alt: 'Gatinho cinza - brinquedo interativo para estimular pets',
+      badge: 'Novo',
+      description: 'Brinquedo resistente para estimular a mente do seu pet'
+    },
+    {
+      id: 3,
+      name: 'Coleira de Couro Premium',
+      price: 149.90,
+      category: 'acessorios',
+      image: 'https://images.unsplash.com/photo-1441057206919-63d19fac2369?auto=format&fit=crop&w=400&h=400',
+      alt: 'Cachorro com coleira - acessório de couro premium para pets',
+      description: 'Coleira elegante em couro legítimo com detalhes dourados'
+    },
+    {
+      id: 4,
+      name: 'Shampoo Hipoalergênico',
+      price: 59.90,
+      category: 'higiene',
+      image: 'https://images.unsplash.com/photo-1501286353178-1ec881214838?auto=format&fit=crop&w=400&h=400',
+      alt: 'Produto de higiene pet - shampoo hipoalergênico para animais',
+      badge: 'Promoção',
+      description: 'Fórmula suave para peles sensíveis'
+    },
+    {
+      id: 5,
+      name: 'Cama Ortopédica Deluxe',
+      price: 299.90,
+      oldPrice: 349.90,
+      category: 'acessorios',
+      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=400',
+      alt: 'Gato relaxando - cama ortopédica confortável para pets',
+      description: 'Cama com espuma ortopédica para maior conforto'
+    },
+    {
+      id: 6,
+      name: 'Kit Dental Completo',
+      price: 89.90,
+      category: 'higiene',
+      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=400',
+      alt: 'Gatinho sorrindo - kit dental para higiene bucal de pets',
+      description: 'Kit completo para higiene dental do seu pet'
+    }
+  ];
+
+  const filteredProducts = selectedCategory === 'todos' 
+    ? products 
+    : products.filter(product => product.category === selectedCategory);
+
+  const getBadgeColor = (badge: string) => {
+    switch (badge) {
+      case 'Bestseller': return 'bg-petmimos-primary text-white';
+      case 'Novo': return 'bg-green-500 text-white';
+      case 'Promoção': return 'bg-red-500 text-white';
+      default: return 'bg-gray-500 text-white';
+    }
+  };
+
+  const handleAddToCart = (product: typeof products[0]) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image
+    });
+  };
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="hero-gradient text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-serif text-5xl font-bold mb-4">
+            Produtos Premium
+          </h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            Seleção exclusiva dos melhores produtos para o bem-estar e felicidade do seu animal de estimação
+          </p>
+        </div>
+      </section>
+
+      {/* Categories Filter */}
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {categories.map((category) => (
+              <Button
+                key={category.id}
+                variant={selectedCategory === category.id ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category.id)}
+                className={selectedCategory === category.id ? "btn-primary" : "hover:border-petmimos-primary hover:text-petmimos-primary"}
+              >
+                {category.name}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Grid */}
+      <section className="py-16 bg-gradient-to-br from-white to-petmimos-accent/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product) => (
+              <Card key={product.id} className="card-hover border-0 shadow-lg overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="relative">
+                    <img 
+                      src={product.image} 
+                      alt={product.alt}
+                      className="w-full h-64 object-cover"
+                    />
+                    {product.badge && (
+                      <Badge className={`absolute top-4 left-4 ${getBadgeColor(product.badge)}`}>
+                        {product.badge}
+                      </Badge>
+                    )}
+                  </div>
+                  
+                  <div className="p-6">
+                    <h3 className="font-semibold text-lg text-petmimos-neutral-dark mb-2">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                      {product.description}
+                    </p>
+                    
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <span className="text-2xl font-bold text-petmimos-primary-dark">
+                          R$ {product.price.toFixed(2).replace('.', ',')}
+                        </span>
+                        {product.oldPrice && (
+                          <span className="text-sm text-gray-500 line-through ml-2">
+                            R$ {product.oldPrice.toFixed(2).replace('.', ',')}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    
+                    <Button 
+                      className="w-full btn-primary"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      Adicionar ao Carrinho
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-16 hero-gradient text-white">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-3xl font-bold mb-4">
+            Receba ofertas exclusivas
+          </h2>
+          <p className="text-xl mb-8 text-white/90">
+            Cadastre-se e seja o primeiro a saber sobre novos produtos e promoções especiais
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input 
+              type="email" 
+              placeholder="Seu e-mail"
+              className="flex-1 px-4 py-3 rounded-full text-gray-900"
+            />
+            <Button className="bg-white text-petmimos-primary-dark hover:bg-petmimos-accent px-8 py-3 rounded-full">
+              Cadastrar
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Products;
