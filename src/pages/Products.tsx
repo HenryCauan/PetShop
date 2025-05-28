@@ -110,7 +110,7 @@ const Products = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-16">
+      <section className="bg-[color:#80c7d9] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-serif text-5xl font-bold mb-4">
             Produtos Premium
@@ -196,21 +196,21 @@ const Products = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 hero-gradient text-white">
+      <section className="py-16 bg-white ">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-3xl font-bold mb-4">
+          <h2 className="font-serif text-3xl font-bold mb-4 gradient-text">
             Receba ofertas exclusivas
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-black/60">
             Cadastre-se e seja o primeiro a saber sobre novos produtos e promoções especiais
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <div className="flex flex-col items-center sm:flex-row gap-4 max-w-md mx-auto">
             <input 
               type="email" 
               placeholder="Seu e-mail"
-              className="flex-1 px-4 py-3 rounded-full text-gray-900"
+              className="flex-1 px-4 py-3 rounded-full btn-primary placeholder:text-white outline-none"
             />
-            <Button className="bg-white text-petmimos-primary-dark hover:bg-petmimos-accent px-8 py-3 rounded-full">
+            <Button className="btn-primary text-white hover:bg-petmimos-accent px-8 py-4 rounded-full">
               Cadastrar
             </Button>
           </div>

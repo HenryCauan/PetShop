@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
+import BG from '../../public/bg-dog.png'
 
 const Index = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -51,35 +51,13 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative hero-gradient text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Mimos Premium para seu 
-                <span className="block text-petmimos-peach"> Melhor Amigo</span>
-              </h1>
-              <p className="text-xl mb-8 text-white/90 leading-relaxed">
-                Na PetMimos, oferecemos produtos e serviços de alta qualidade para garantir o bem-estar e felicidade do seu animal de estimação.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild className="bg-white text-petmimos-pink-dark hover:bg-petmimos-cream text-lg px-8 py-4 rounded-full">
-                  <Link to="/products">Explorar Produtos</Link>
-                </Button>
-                <Button variant="outline" asChild className="border-white text-white hover:bg-white hover:text-petmimos-pink-dark text-lg px-8 py-4 rounded-full">
-                  <Link to="/services">Nossos Serviços</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="animate-scale-in">
-              <img 
-                src="https://images.unsplash.com/photo-1501286353178-1ec881214838?auto=format&fit=crop&w=600&h=600" 
-                alt="Pet feliz" 
-                className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
-              />
-            </div>
-          </div>
+      <section className="relative h-[70vh] flex flex-col md:flex-row justify-between bg-[color:#80c7d9] text-white py-20 overflow-hidden">
+        <div className="relative h-full flex flex-col justify-center md:my-auto md:left-[20vw] mt-24 p-8">
+          <h1 className='text-[16vw] md:text-[12rem] font-bold md:leading-[11rem] py-4'>PET<br></br>MIMOS</h1>
+          <p className='font-bold text-xl w-full md:w-[40rem]'>“Cuidando de quem te ama sem pedir nada em troca ” Aqui, seu pet recebe carinho, cuidado e atenção como parte da família.</p>
+        </div>
+        <div className="">
+          <img className='md:relative top-0 absolute order-1' src={BG} alt="" />
         </div>
       </section>
 
@@ -181,21 +159,21 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 hero-gradient text-white">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-4xl font-bold mb-6">
+          <h2 className="font-serif text-4xl font-bold mb-6  gradient-text">
             Pronto para cuidar melhor do seu pet?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-black/70">
             Entre em contato conosco e descubra como podemos ajudar a manter seu animal de estimação feliz e saudável.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild className="bg-white text-petmimos-pink-dark hover:bg-petmimos-cream text-lg px-8 py-4 rounded-full">
+            <Button asChild className="btn-primary text-white hover:bg-petmimos-cream text-lg px-8 py-4 rounded-full">
               <Link to="/contact">Fale Conosco</Link>
             </Button>
             <Button 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-petmimos-pink-dark text-lg px-8 py-4 rounded-full"
+              className="border-white btn-primary text-white hover:bg-white hover:text-petmimos-pink-dark text-lg px-8 py-4 rounded-full"
               onClick={() => setIsBookingModalOpen(true)}
             >
               Agendar Consulta

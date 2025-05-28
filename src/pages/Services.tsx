@@ -109,7 +109,7 @@ const Services = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-16">
+      <section className="bg-[color:#80c7d9] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-serif text-5xl font-bold mb-4">
             Nossos Serviços
@@ -230,7 +230,7 @@ const Services = () => {
               { step: '4', title: 'Acompanhamento', description: 'Orientações e cuidados continuados' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 hero-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[color:#80c7d9] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold text-xl">{item.step}</span>
                 </div>
                 <h3 className="font-semibold text-petmimos-taupe mb-2">{item.title}</h3>
@@ -242,22 +242,22 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 hero-gradient text-white">
+      <section className="py-16 bg-white text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-4xl font-bold mb-6">
+          <h2 className="font-serif text-4xl font-bold mb-6 gradient-text">
             Pronto para agendar?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-black/70">
             Entre em contato conosco e garante o melhor cuidado para seu animal de estimação
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              className="bg-white text-petmimos-taupe hover:bg-petmimos-cream text-lg px-8 py-4 rounded-full"
+              className="bg-white text-petmimos-taupe btn-primary hover:bg-petmimos-cream text-lg px-8 py-4 rounded-full"
               onClick={handleBookingClick}
             >
               Agendar Online
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-petmimos-taupe text-lg px-8 py-4 rounded-full">
+            <Button variant="outline" className="border-white btn-primary text-white hover:bg-white hover:text-petmimos-taupe text-lg px-8 py-4 rounded-full">
               (11) 9999-9999
             </Button>
           </div>
