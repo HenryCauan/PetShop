@@ -6,6 +6,12 @@ import { Badge } from '@/components/ui/badge';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
+import Injecao from '../assets/Cão golden retriever recebendo injeção de vacina durante consulta na clínica veterinária _ Foto Premium.jpeg'
+import Fisioterapia from '../assets/Front paws on FitRamp.jpeg'
+import Cirurgia from '../assets/Animal_Direct.jpeg'
+import Vacina from '../assets/586 LA IMPORTANCIA DE VACUNAR A UN PERRO kitty.jpeg'
+import Banho from '../assets/36_300+ Dog Grooming fotos de stock, imagens e fotos royalty-free - iStock.jpeg'
+import Hotel from '../assets/10 Luxurious Dog Room Ideas_ Shared Multi-Dog Spaces.jpeg'
 
 const Services = () => {
   const navigate = useNavigate();
@@ -19,7 +25,7 @@ const Services = () => {
       price: 'A partir de R$ 120',
       duration: '30-45 min',
       features: ['Exame clínico completo', 'Orientação nutricional', 'Plano de vacinação', 'Receituário quando necessário'],
-      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=300',
+      src: Injecao,
       badge: 'Mais Procurado'
     },
     {
@@ -29,7 +35,7 @@ const Services = () => {
       price: 'A partir de R$ 80',
       duration: '1-2 horas',
       features: ['Banho com produtos premium', 'Tosa higiênica ou completa', 'Corte de unhas', 'Limpeza de ouvidos'],
-      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=300',
+      src: Banho,
       badge: 'Promoção'
     },
     {
@@ -39,7 +45,7 @@ const Services = () => {
       price: 'A partir de R$ 60',
       duration: '15-20 min',
       features: ['Vacinas importadas', 'Cartão de vacinação', 'Avaliação pré-vacinal', 'Orientações pós-vacina'],
-      image: 'https://images.unsplash.com/photo-1441057206919-63d19fac2369?auto=format&fit=crop&w=400&h=300'
+      src: Vacina,
     },
     {
       id: 4,
@@ -48,7 +54,7 @@ const Services = () => {
       price: 'A partir de R$ 100/dia',
       duration: 'Por dia',
       features: ['Quartos climatizados', 'Alimentação controlada', 'Passeios diários', 'Monitoramento 24h'],
-      image: 'https://images.unsplash.com/photo-1501286353178-1ec881214838?auto=format&fit=crop&w=400&h=300',
+      src: Hotel,
       badge: 'Premium'
     },
     {
@@ -58,7 +64,7 @@ const Services = () => {
       price: 'Consulte valores',
       duration: 'Variável',
       features: ['Centro cirúrgico equipado', 'Anestesia segura', 'Monitoramento completo', 'Cuidados pós-operatórios'],
-      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=300'
+      src: Cirurgia,
     },
     {
       id: 6,
@@ -67,7 +73,7 @@ const Services = () => {
       price: 'A partir de R$ 150',
       duration: '45-60 min',
       features: ['Hidroterapia', 'Laser terapia', 'Acupuntura', 'Exercícios terapêuticos'],
-      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=300',
+      src: Fisioterapia,
       badge: 'Especializado'
     }
   ];
@@ -107,7 +113,7 @@ const Services = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="bg-[color:#80c7d9] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -155,11 +161,11 @@ const Services = () => {
               <Card key={service.id} className="card-hover border-0 shadow-lg overflow-hidden">
                 <CardContent className="p-0">
                   <div className="md:flex">
-                    <div className="md:w-1/3 relative">
-                      <img 
-                        src={service.image} 
+                    <div className="md:w-1/3 relative aspect-square">
+                      <img
+                        src={service.src}
                         alt={service.name}
-                        className="w-full h-48 md:h-full object-cover"
+                        className="w-full h-full object-cover"
                       />
                       {service.badge && (
                         <Badge className={`absolute top-4 left-4 ${getBadgeColor(service.badge)}`}>
@@ -167,7 +173,7 @@ const Services = () => {
                         </Badge>
                       )}
                     </div>
-                    
+
                     <div className="md:w-2/3 p-6">
                       <div className="flex justify-between items-start mb-3">
                         <h3 className="font-serif text-xl font-semibold text-petmimos-taupe">
@@ -178,11 +184,11 @@ const Services = () => {
                           <p className="text-sm text-gray-500">{service.duration}</p>
                         </div>
                       </div>
-                      
+
                       <p className="text-gray-600 mb-4">
                         {service.description}
                       </p>
-                      
+
                       <div className="mb-6">
                         <h4 className="font-semibold text-petmimos-taupe mb-2">Inclui:</h4>
                         <ul className="text-sm text-gray-600 space-y-1">
@@ -194,8 +200,8 @@ const Services = () => {
                           ))}
                         </ul>
                       </div>
-                      
-                      <Button 
+
+                      <Button
                         className="btn-primary w-full"
                         onClick={handleBookingClick}
                       >
@@ -221,7 +227,7 @@ const Services = () => {
               Processo simples para cuidar do seu pet
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               { step: '1', title: 'Agendamento', description: 'Escolha o serviço e horário' },
@@ -251,7 +257,7 @@ const Services = () => {
             Entre em contato conosco e garante o melhor cuidado para seu animal de estimação
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               className="bg-white text-petmimos-taupe btn-primary hover:bg-petmimos-cream text-lg px-8 py-4 rounded-full"
               onClick={handleBookingClick}
             >
@@ -265,10 +271,10 @@ const Services = () => {
       </section>
 
       <Footer />
-      
-      <BookingModal 
-        isOpen={isBookingModalOpen} 
-        onClose={() => setIsBookingModalOpen(false)} 
+
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
       />
     </div>
   );

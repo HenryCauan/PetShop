@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,6 +6,12 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import Racao from '../assets/Ração Grannature Premium Cães Pequenas Raças Frango 10_1kg.jpeg'
+import Brinquedo from '../assets/kit de 4 Brinquedo mordedor para cachorros pequenos bola corda pet.jpeg'
+import Coleira from '../assets/Conjunto de arnês e coleira Fida para passear com cães e gatos rosa XXXS.jpeg'
+import Shampoo from '../assets/Kit Condicionador + Shampoo Filhote Pet Clean Cachorro Gato.jpeg'
+import Cama from '../assets/Sofá cama ortopédica para perros – Camas ultra cómodas para perros medianos.jpeg'
+import KitDental from '../assets/Kit Talco Cachorro Fêmea Creme Dental Sabores e Escova de Dentes - Higiene a Seco e Bucal Pet Clean.jpeg'
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState('todos');
@@ -28,7 +33,7 @@ const Products = () => {
       price: 189.90,
       oldPrice: 219.90,
       category: 'racao',
-      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=400',
+      src: Racao,
       alt: 'Gato laranja e branco deitado - ração premium para felinos',
       badge: 'Bestseller',
       description: 'Alimentação completa e balanceada para cães adultos'
@@ -38,7 +43,7 @@ const Products = () => {
       name: 'Brinquedo Interativo Kong',
       price: 79.90,
       category: 'brinquedos',
-      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=400',
+      src: Brinquedo,
       alt: 'Gatinho cinza - brinquedo interativo para estimular pets',
       badge: 'Novo',
       description: 'Brinquedo resistente para estimular a mente do seu pet'
@@ -48,7 +53,7 @@ const Products = () => {
       name: 'Coleira de Couro Premium',
       price: 149.90,
       category: 'acessorios',
-      image: 'https://images.unsplash.com/photo-1441057206919-63d19fac2369?auto=format&fit=crop&w=400&h=400',
+      src: Coleira,
       alt: 'Cachorro com coleira - acessório de couro premium para pets',
       description: 'Coleira elegante em couro legítimo com detalhes dourados'
     },
@@ -57,7 +62,7 @@ const Products = () => {
       name: 'Shampoo Hipoalergênico',
       price: 59.90,
       category: 'higiene',
-      image: 'https://images.unsplash.com/photo-1501286353178-1ec881214838?auto=format&fit=crop&w=400&h=400',
+      src: Shampoo,
       alt: 'Produto de higiene pet - shampoo hipoalergênico para animais',
       badge: 'Promoção',
       description: 'Fórmula suave para peles sensíveis'
@@ -68,7 +73,7 @@ const Products = () => {
       price: 299.90,
       oldPrice: 349.90,
       category: 'acessorios',
-      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=400',
+      src: Cama,
       alt: 'Gato relaxando - cama ortopédica confortável para pets',
       description: 'Cama com espuma ortopédica para maior conforto'
     },
@@ -77,7 +82,7 @@ const Products = () => {
       name: 'Kit Dental Completo',
       price: 89.90,
       category: 'higiene',
-      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=400',
+      src: KitDental,
       alt: 'Gatinho sorrindo - kit dental para higiene bucal de pets',
       description: 'Kit completo para higiene dental do seu pet'
     }
@@ -101,7 +106,7 @@ const Products = () => {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image
+      image: product.src
     });
   };
 
@@ -146,11 +151,11 @@ const Products = () => {
             {filteredProducts.map((product) => (
               <Card key={product.id} className="card-hover border-0 shadow-lg overflow-hidden">
                 <CardContent className="p-0">
-                  <div className="relative">
+                  <div className="relative h-64 flex items-center justify-center">
                     <img 
-                      src={product.image} 
+                      src={product.src}
                       alt={product.alt}
-                      className="w-full h-64 object-cover"
+                      className="max-h-full max-w-full object-scale-down"
                     />
                     {product.badge && (
                       <Badge className={`absolute top-4 left-4 ${getBadgeColor(product.badge)}`}>
