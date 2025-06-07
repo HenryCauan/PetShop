@@ -6,6 +6,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import BG from '../../public/bg-dog.png'
+import Produtos from '../assets/Seleção de produtos!.jpeg'
+import Cuidados from '../assets/cuidados.jpeg'
+import Ambiente from '../assets/ambiente.jpeg'
 
 const Index = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -14,17 +17,17 @@ const Index = () => {
     {
       title: 'Produtos Premium',
       description: 'Seleção exclusiva dos melhores produtos para seu pet',
-      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=400&h=300'
+      src: Produtos,
     },
     {
       title: 'Cuidados Especializados',
       description: 'Serviços veterinários e estética com profissionais qualificados',
-      image: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=400&h=300'
+      src: Cuidados,
     },
     {
       title: 'Ambiente Acolhedor',
       description: 'Espaço confortável e seguro para o bem-estar do seu animal',
-      image: 'https://images.unsplash.com/photo-1441057206919-63d19fac2369?auto=format&fit=crop&w=400&h=300'
+      src: Ambiente,
     }
   ];
 
@@ -57,7 +60,7 @@ const Index = () => {
           <p className='font-bold text-xl w-full md:w-[40rem]'>“Cuidando de quem te ama sem pedir nada em troca ” Aqui, seu pet recebe carinho, cuidado e atenção como parte da família.</p>
         </div>
         <div className="">
-          <img className='md:relative top-0 absolute order-1' src={BG} alt="" />
+          <img className='md:relative top-0 l absolute order-1 ' src={BG} alt="" />
         </div>
       </section>
 
@@ -79,7 +82,7 @@ const Index = () => {
                 <CardContent className="p-0">
                   <div className="aspect-video overflow-hidden rounded-t-lg">
                     <img 
-                      src={feature.image} 
+                      src={feature.src} 
                       alt={feature.title}
                       className="w-full h-full object-cover"
                     />
