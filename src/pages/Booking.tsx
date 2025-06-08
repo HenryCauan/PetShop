@@ -239,7 +239,7 @@ const Booking = () => {
                         onClick={() => setFormData({ ...formData, time })}
                         className={`px-3 py-2 text-sm rounded-lg border transition-colors ${
                           formData.time === time
-                            ? 'bg-petmimos-taupe text-white border-petmimos-taupe'
+                            ? 'bg-petmimos-secondary-dark text-white border-petmimos-taupe'
                             : 'border-petmimos-sage/30 hover:border-petmimos-taupe hover:bg-petmimos-sage/10'
                         }`}
                       >

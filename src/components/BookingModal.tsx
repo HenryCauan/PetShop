@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { X, Calendar, Clock, User, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -192,7 +191,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
               >
                 <option value="">Selecione um horário</option>
                 {timeSlots.map((time) => (
-                  <option key={time} value={time}>
+                  <option key={time} value={time} className={formData.time === time ? "bg-petmimos-pink text-white" : ""}>
                     {time}
                   </option>
                 ))}
