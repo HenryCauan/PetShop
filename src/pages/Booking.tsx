@@ -134,7 +134,7 @@ const Booking = () => {
               <div key={step.number} className="flex items-center">
                 <div className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium ${
                   currentStep >= step.number 
-                    ? 'bg-petmimos-taupe text-white' 
+                    ? 'bg-petmimos-taupe text-cyan-500' 
                     : 'bg-gray-200 text-gray-500'
                 }`}>
                   {currentStep > step.number ? <Check className="w-5 h-5" /> : step.number}
